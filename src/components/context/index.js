@@ -1,11 +1,11 @@
 //a chekear
 import React, { useState, useEffect, createContext } from "react";
-// import Data from "./Data/Data"
-import axios from 'axios';
+import Data from "./Data/Data"
+
 
 export const DataContext = createContext();
 
-const DataProvider = ({children}) => {
+const DataProvider = ({ children }) => {
   const [shows, setShows] = useState([]);
   const [menu, setMenu] = useState(false);
   const [carrito, setCarrito] = useState([]);
@@ -14,21 +14,12 @@ const DataProvider = ({children}) => {
   console.log(carrito)
 
   useEffect(() => {
-    // const show = Data.items
-    // if (show) {
-    //   setShows(show)
-    // } else {
-    //   setShows([])
-    // }
-    axios
-    .get("http://localhost:8000/api/publication",{
-        headers: {
-            'Authorization': `Bearer ${JSON.parse(localStorage.getItem("Token"))}`,
-            'Content-Type': 'application/json'
-        }
-    })
-    .then((res) =>setShows (res.data))
-    .catch((err) => err.response.data)
+    const show = Data.items
+    if (show) {
+      setShows(show)
+    } else {
+      setShows([])
+    }
   }, [])
 
   const addCarrito = (id) => {
@@ -51,7 +42,7 @@ const DataProvider = ({children}) => {
     if (dataCarrito) {
       setCarrito(dataCarrito)
     }
-   
+
   }, [])
 
   useEffect(() => {
@@ -69,7 +60,7 @@ const DataProvider = ({children}) => {
   }, [carrito])
 
   const value = {
-    shows: [shows],
+    shows: shows,
     menu: [menu, setMenu],
     addCarrito,
     carrito: [carrito, setCarrito],

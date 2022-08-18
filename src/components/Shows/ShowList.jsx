@@ -1,12 +1,15 @@
 import React from 'react'
 import ShowItem from './ShowItem'
+
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import '../Cart/Carrito.css'
 
 
+
 export const ShowsList = ({ shows }) => {
+ 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Typography className="title" variant='h2' component='h1' textAlign='center' my={4}>

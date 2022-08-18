@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const colors = {
@@ -138,7 +138,7 @@ const SuccessMessage = styled.p`
 	color: ${colors.valid};
 `;
 
-const ErrorMessage= styled.div`
+const ErrorMessage = styled.div`
 	height: 45px;
 	line-height: 45px;
 	background: #F66060;

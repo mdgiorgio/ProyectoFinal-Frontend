@@ -17,13 +17,14 @@ import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import '../Cart/Carrito.css'
+import { UseNavigate } from 'react-router-dom'
 
 export const Carrito = () => {
   const value = useContext(DataContext)
   const [menu, setMenu] = value.menu
   const [carrito, setCarrito] = value.carrito
   const [total] = value.total
-  // const [buy, setBuy] = useState('')
+  //const [buy, setBuy] = useState('')
 
   const toggleMenu = () => {
     setMenu(false)
@@ -34,7 +35,6 @@ export const Carrito = () => {
       console.log(carrito)
 
     }
-    
 
   const resta = (id) => {
     carrito.forEach((item) => {
@@ -65,6 +65,7 @@ export const Carrito = () => {
       setCarrito([...carrito])
     }
   }
+
 
   return (
     <Accordion className='show' sx={{ margin: '1rem' }}>
@@ -143,7 +144,7 @@ export const Carrito = () => {
             Total: ${total}
           </Typography>
           <Grid  container justifyContent='flex-end'>
-            <Button className="btn" variant='contained' onClick={handleBuyClick} align='right'>
+            <Button className="btn" variant='contained' onClick={handleBuyClick} align='right' navigate="/tickes">
               Pagar
             </Button>
           </Grid>

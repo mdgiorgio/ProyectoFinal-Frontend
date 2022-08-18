@@ -1,9 +1,10 @@
-import React, {useState } from "react";
-import {Form,Label,TermsContainer,CenteredBottoomCointainer,Buton,SuccessMessage,ErrorMessage,} from "../../elementos/Formularios";
+import React, { useState } from "react";
+import { Form, Label, TermsContainer, CenteredBottoomCointainer, Buton, SuccessMessage, ErrorMessage, } from "./Formularios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import Input from "../Input/Input"
-import {userRegister} from "../../services/Axios"
+import { userRegister } from "../../services/Axios"
+import { useNavigate } from "react-router-dom"
 
 const Register = () => {
   const [user, setUser] = useState({ textField: "", valid: null });
@@ -48,9 +49,9 @@ const Register = () => {
       mail.valid === "true" &&
       phone.valid === "true" &&
       terms
-    ) { 
+    ) {
       userRegister({
-        data:{
+        data: {
           username: user.textField,
           name: name.textField,
           password: password.textField,
@@ -141,7 +142,7 @@ const Register = () => {
               name="terminos"
               id="terminos"
               checked={terms}
-              onChange={()=>setTerms((prep)=>!prep)}
+              onChange={() => setTerms((prep) => !prep)}
             />
             Acepto los Terminos y Condiciones
           </Label>

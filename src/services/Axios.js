@@ -13,7 +13,7 @@ export const userRegister = async ({data}) => {
     const response = axios
         .post("http://localhost:8000/auth/register", data)
         .then((res) => res.data)
-        .catch((err) => err.response.data);
+        .catch((err) => console.log(err.message));
     return response
 };
 
@@ -137,6 +137,9 @@ export const deletePublicationById = async ({ deletePublicationId}) => {
         .catch((err) => err.response.data);
     return response
 };
+
+
+
 
 /*
 importar: import {getUserById} from axios.js(ruta)

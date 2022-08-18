@@ -1,0 +1,138 @@
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import { useState, useEffect } from "react";
+
+import axios from "axios";
+
+
+export default function postShow() {
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState("");
+  const [artist, setArtist] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+
+  useEffect(() => {
+    setTitle("");
+    setDate("");
+    setArtist("");
+    setPrice("");
+    setCategory("");
+  }, []);
+
+  const handleTitle = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const handleDate = (event) => {
+    setDate(event.target.value);
+  };
+
+  const handleArtist = (event) => {
+    setArtist(event.target.value);
+  };
+
+  const handlePrice = (event) => {
+    setPrice(event.target.value);
+  };
+
+  const handleCategory = (event) => {
+    setCategory(event.target.value);
+  };
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    setTitle(event.target.value);
+    setDate(event.target.value);
+    setArtist(event.target.value);
+    setPrice(event.target.value);
+    setCategory(event.target.value);
+    console.log({
+      title,
+      date,
+      artist,
+      price,
+      category
+    });
+
+    axios
+      .post(
+        "http://localhost:8000/api/publication",
+        { namePlant, description, tips, imgUrl },
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              window.localStorage.getItem("token")
+            )}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.status);
+      })
+      .catch((err) => err.response.message);
+  };
+
+  return (
+    <div>
+      <Box
+        component="form"
+        sx={{
+          color: "white",
+          p: 7,
+          display: "flex",
+          borderRadius: 2,
+          bgcolor: "#004d40",
+          maxWidth: "auto",
+          "& > :not(style)": { m: 1, maxWidth: "100%" },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <TextField
+          sx={{ bgcolor: "whitesmoke", fontStyle: "italic" }}
+          id="filled-basic"
+          label="Titulo"
+          variant="filled"
+          onChange={handleTitle}
+        />
+        <TextField
+          sx={{ bgcolor: "whitesmoke", fontStyle: "italic" }}
+          id="filled-basic"
+          label="Artista"
+          variant="filled"
+          onChange={handleArtist}
+        />
+        <TextField
+          sx={{ bgcolor: "whitesmoke", fontStyle: "italic" }}
+          id="filled-basic"
+          label="Fecha"
+          variant="filled"
+          onChange={handleDate}
+        />
+        <TextField
+          sx={{ bgcolor: "whitesmoke", fontStyle: "italic" }}
+          id="filled-basic"
+          label="Precio"
+          variant="filled"
+          onChange={handlePrice}
+        />
+        <TextField
+          sx={{ bgcolor: "whitesmoke", fontStyle: "italic" }}
+          id="filled-basic"
+          label="category"
+          variant="filled"
+          onChange={handleCategory}
+        />
+        <Button
+          sx={{ color: "white" }}
+          variant="outlined"
+          onClick={handleClick}
+        >
+          Generar publicacion
+        </Button>
+      </Box>
+    </div>
+  );
+}

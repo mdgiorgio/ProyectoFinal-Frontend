@@ -1,5 +1,5 @@
 import React from "react";
-import {Inputs,Label,AllInputs, LeyendError,IconValidation,} from "./../elementos/Formularios";
+import {Inputs,Label,AllInputs, LeyendError,IconValidation,} from "../../elementos/Formularios";
 import {faCheckCircle,faTimesCircle,} from "@fortawesome/free-solid-svg-icons";
 
 const ComponentInput = ({ //en vez de usar props "destructuro" propiedaddes .
